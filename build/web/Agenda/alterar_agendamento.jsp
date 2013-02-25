@@ -14,7 +14,7 @@
             <h:form id="alterarAge" prependId="false">
                 
                 Data : <br/><h:inputText id="nome" value="#{Agenda.dataHora}">
-                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
                                 </h:inputText><br/>
                 
                 Exame: <br/><h:selectOneMenu id="idExame" value="#{Agenda.idExame}" >

@@ -33,10 +33,11 @@
                     
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="CodExame"/>
                         </f:facet>                        
-                        <h:selectBooleanCheckbox value="#{agenda.agendaMarcado}"/>
+                        <h:outputText value="#{agenda.exameBean.idExame}"/>
                     </h:column>
-                    
+                                        
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Data"/>
@@ -53,13 +54,6 @@
                     
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Medico"/>
-                        </f:facet>                        
-                        <h:outputText value="#{agenda.medicoBean.nome}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
                             <h:outputText value="Paciente"/>
                         </f:facet>                        
                         <h:outputText value="#{agenda.pacienteBean.nome}"/>
@@ -67,16 +61,9 @@
                     
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Resultado"/>
+                            <h:outputText value="Valor"/>
                         </f:facet>                        
-                        <h:outputText value="#{agenda.resultado}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Observacoes"/>
-                        </f:facet>                        
-                        <h:outputText value="#{agenda.obs}"/>
+                        <h:outputText value="#{agenda.exameBean.valor}"/>
                     </h:column>
                     
                 </h:dataTable>

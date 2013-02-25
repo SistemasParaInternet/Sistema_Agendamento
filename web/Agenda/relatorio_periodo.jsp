@@ -26,22 +26,16 @@
     <body>
         <f:view>
             <h:form id="listarAge" prependId="false">
-                <h:dataTable value="#{Agenda.listarTodos()}" var="agenda" id="listarAgendamentos"
+                <h:dataTable value="#{Agenda.listarRelatorio()}" var="agenda" id="listarAgendamentos"
                              width="600" border="1" cellpadding="2" cellspacing="1"
                              headerClass="cabecalho" columnClasses="colunaMarca, coluna, coluna, coluna, coluna,
                              coluna, coluna">
-                    
+                
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="CodExame"/>
                         </f:facet>                        
-                        <h:selectBooleanCheckbox value="#{agenda.agendaMarcado}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Data"/>
-                        </f:facet>                        
-                        <h:outputText value="#{agenda.dataHora}"/>
+                        <h:outputText value="#{agenda.exameBean.idExame}"/>
                     </h:column>
                     
                     <h:column>
@@ -53,9 +47,9 @@
                     
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Medico"/>
+                            <h:outputText value="Data"/>
                         </f:facet>                        
-                        <h:outputText value="#{agenda.medicoBean.nome}"/>
+                        <h:outputText value="#{agenda.dataHora}"/>
                     </h:column>
                     
                     <h:column>
@@ -65,30 +59,7 @@
                         <h:outputText value="#{agenda.pacienteBean.nome}"/>
                     </h:column>
                     
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Resultado"/>
-                        </f:facet>                        
-                        <h:outputText value="#{agenda.resultado}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Observacoes"/>
-                        </f:facet>                        
-                        <h:outputText value="#{agenda.obs}"/>
-                    </h:column>
-                    
                 </h:dataTable>
-                
-                <br/><br/>
-                
-                <h:commandButton value="Editar" action="#{Agenda.carregarAgendamento()}"/>
-                <h:commandButton value="Apagar" action="#{Agenda.remove()}"/>
-                
-                <br/><br/>
-                
-                <h:outputText value="#{Agenda.texto}"/>
                 
                 <br/><br/>
                 

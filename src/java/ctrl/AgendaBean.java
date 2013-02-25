@@ -10,6 +10,8 @@ import javax.faces.model.ListDataModel;
 public class AgendaBean {
 
     private Date dataHora;
+    private Date dataInicial;
+    private Date dataFinal;
     private Integer idMedico;
     private Integer idPaciente;
     private Integer idExame;
@@ -73,7 +75,7 @@ public class AgendaBean {
         for (AgendaBean agendas : agendasBean) {
             if (agendas.isAgendaMarcado()) {
                 AgendaDAO agendaDAO = new AgendaDAO(agendas.getDataHora(), agendas.getIdMedico(), 
-                        agendas.getIdPaciente(), agendas.getIdExame());
+                        agendas.getIdPaciente(), agendas.getIdExame(), agendas.getObs(), agendas.getResultado());
                 agendaDAO.deleta();
                 cont++;
             }
@@ -122,12 +124,20 @@ public class AgendaBean {
         }
     }
     
-    public DataModel listarAgendamentos() {
+    public DataModel listarTodos() {
+        return listarAgendamentos("SELECT a FROM Agenda a");
+    }
+        
+    public DataModel listarRelatorio() {
+        return listarAgendamentos("SELECT * FROM Agenda WHERE dataHora BETWEEN :dataInicial AND :dataFinal");
+    }
+    
+    public DataModel listarAgendamentos(String consulta) {
         AgendaDAO agendaDAO = new AgendaDAO();
         agendasBean.removeAll(agendasBean);;
         
-        if (agendaDAO.getAgendamentos() != null){
-            for (AgendaDAO aDAO : agendaDAO.getAgendamentos()){
+        if (agendaDAO.getAgendamentos(consulta) != null){
+            for (AgendaDAO aDAO : agendaDAO.getAgendamentos(consulta)){
                 
                 AgendaBean agenda = (new AgendaBean(aDAO.getDataHora(), aDAO.getIdMedico(), aDAO.getIdPaciente(),
                         aDAO.getIdExame(), aDAO.getObs(), aDAO.getResultado()));
@@ -151,10 +161,10 @@ public class AgendaBean {
             }
             
             return new ListDataModel(agendasBean);
+            
         } else {
             return null;
         }
-    
     }
     
     public void limpar(){

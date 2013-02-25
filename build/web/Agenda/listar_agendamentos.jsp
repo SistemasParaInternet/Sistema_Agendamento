@@ -26,7 +26,7 @@
     <body>
         <f:view>
             <h:form id="listarAge" prependId="false">
-                <h:dataTable value="#{Agenda.listarAgendamentos()}" var="agenda" id="listarAgendamentos"
+                <h:dataTable value="#{Agenda.listarTodos()}" var="agenda" id="listarAgendamentos"
                              width="600" border="1" cellpadding="2" cellspacing="1"
                              headerClass="cabecalho" columnClasses="colunaMarca, coluna, coluna, coluna, coluna,
                              coluna, coluna">

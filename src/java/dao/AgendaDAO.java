@@ -114,7 +114,7 @@ public class AgendaDAO {
                 conecta().remove(agenda);
                 conecta().getTransaction().commit();
                 
-                System.out.println("======================ESTOU AQUI!====================");
+                System.out.println("======================ESTOU AQUIZZ!====================");
                 
                 return true;
             } else {
@@ -131,10 +131,10 @@ public class AgendaDAO {
         }
     }
     
-    public List<AgendaDAO> getAgendamentos() {
+    public List<AgendaDAO> getAgendamentos(String consulta) {
         try{
             if (conecta() != null) {
-                Query q = conecta().createQuery("SELECT a FROM Agenda a");
+                Query q = conecta().createQuery(consulta);
                 
                 List<Agenda> agenda = q.getResultList();
                 List<AgendaDAO> agendaDAO = new ArrayList();
@@ -157,6 +157,34 @@ public class AgendaDAO {
             return null;
         }
     }
+    
+    public List<AgendaDAO> getRelatorio(String consulta){
+     
+        try {
+            if (conecta() != null) {
+                Query q = conecta().createQuery(consulta);
+                
+                List<Agenda> agenda = q.getResultList();
+                List<AgendaDAO> agendaDAO = new ArrayList();
+                
+                for (Agenda a : agenda){
+                    AgendaPK agendaPK = a.getAgendaPK();
+                    agendaDAO.add(new AgendaDAO(agendaPK.getDataHora(), agendaPK.getIdMedico(), agendaPK.getIdPaciente(),
+                            agendaPK.getIdExame(), a.getObs(), a.getResultado()));
+                }
+                
+                return agendaDAO;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            if(conecta().getTransaction().isActive()){
+                conecta().getTransaction().rollback();
+            }
+            return null;
+        }
+        
+    }        
     
     public Date getDataHora() {
         return dataHora;
