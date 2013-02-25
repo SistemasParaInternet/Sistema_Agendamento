@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+ <persistence-unit name="TrabalhoFinalPU" transaction-type="RESOURCE_LOCAL">
+   <provider>org.hibernate.ejb.HibernatePersistence</provider>
+   <jta-data-source>db_exames</jta-data-source>
+   <class>bd.Agenda</class>
+   <class>bd.Exame</class>
+   <class>bd.Medico</class>
+   <class>bd.Paciente</class>
+   <exclude-unlisted-classes>true</exclude-unlisted-classes>
+   <properties>
+     <property name="hibernate.connection.username" value="root"/>
+     <property name="hibernate.connection.password" value="4l4r1c"/>
+     <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/db_exames"/>
+     <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+   </properties>
+ </persistence-unit>
+</persistence>
