@@ -24,8 +24,9 @@ public class AgendaBean {
     private PacienteBean pacienteBean;    
 
     public AgendaBean() {
-        limpar();
-    }
+        
+        
+        limpar();    }
 
     public AgendaBean(Date datahora, Integer idMedico, Integer idPaciente,
             Integer idExame, String obs, String resultado) {
