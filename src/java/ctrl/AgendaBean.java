@@ -9,9 +9,7 @@ import javax.faces.model.ListDataModel;
 
 public class AgendaBean {
 
-    private Date dataHora;
-    private Date dataInicial;
-    private Date dataFinal;
+    private Date dataHora;    
     private Integer idMedico;
     private Integer idPaciente;
     private Integer idExame;
@@ -128,10 +126,6 @@ public class AgendaBean {
         return listarAgendamentos("SELECT a FROM Agenda a");
     }
         
-    public DataModel listarRelatorio() {
-        return listarAgendamentos("SELECT * FROM Agenda WHERE dataHora BETWEEN :dataInicial AND :dataFinal");
-    }
-    
     public DataModel listarAgendamentos(String consulta) {
         AgendaDAO agendaDAO = new AgendaDAO();
         agendasBean.removeAll(agendasBean);;

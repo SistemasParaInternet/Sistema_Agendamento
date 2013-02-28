@@ -32,12 +32,23 @@
         <managed-bean-scope>session</managed-bean-scope>        
     </managed-bean>
     
+    <managed-bean>
+        <managed-bean-name>Relatorio</managed-bean-name>
+        <managed-bean-class>ctrl.GeraRelatorioBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>        
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>Agenda</managed-bean-name>
+        <managed-bean-class>ctrl.AgendaBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>        
+    </managed-bean>
     
     <navigation-rule>
-        <from-view-id>Paciente/listar_pacientes.jsp</from-view-id>
+        <from-view-id>/Paciente/listar_pacientes.jsp</from-view-id>
         <navigation-case>
             <from-outcome>paciente</from-outcome>
-            <to-view-id>Paciente/alterar_paciente.jsp</to-view-id>
+            <to-view-id>/Paciente/alterar_paciente.jsp</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -47,10 +58,10 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>Paciente/cadastrar_paciente.jsp</from-view-id>
+        <from-view-id>/Paciente/cadastrar_paciente.jsp</from-view-id>
         <navigation-case>
             <from-outcome>listarPac</from-outcome>
-            <to-view-id>Paciente/listar_pacientes.jsp</to-view-id>
+            <to-view-id>/Paciente/listar_pacientes.jsp</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
@@ -59,10 +70,10 @@
     
     
     <navigation-rule>
-        <from-view-id>Exame/listar_exames.jsp</from-view-id>
+        <from-view-id>/Exame/listar_exames.jsp</from-view-id>
         <navigation-case>
             <from-outcome>exames</from-outcome>
-            <to-view-id>Exame/alterar_exame.jsp</to-view-id>
+            <to-view-id>/Exame/alterar_exame.jsp</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -72,10 +83,10 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>Exame/cadastrar_exame.jsp</from-view-id>
+        <from-view-id>/Exame/cadastrar_exame.jsp</from-view-id>
         <navigation-case>
             <from-outcome>listarExe</from-outcome>
-            <to-view-id>Exame/listar_exames.jsp</to-view-id>
+            <to-view-id>/Exame/listar_exames.jsp</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
@@ -83,10 +94,10 @@
     
     
     <navigation-rule>
-        <from-view-id>Medico/listar_medicos.jsp</from-view-id>
+        <from-view-id>/Medico/listar_medicos.jsp</from-view-id>
         <navigation-case>
             <from-outcome>medico</from-outcome>
-            <to-view-id>Medico/alterar_medico.jsp</to-view-id>
+            <to-view-id>/Medico/alterar_medico.jsp</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -96,10 +107,10 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>Medico/cadastrar_medico.jsp</from-view-id>
+        <from-view-id>/Medico/cadastrar_medico.jsp</from-view-id>
         <navigation-case>
             <from-outcome>listarMed</from-outcome>
-            <to-view-id>Medico/listar_medicos.jsp</to-view-id>
+            <to-view-id>/Medico/listar_medicos.jsp</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
@@ -107,10 +118,10 @@
     
     
     <navigation-rule>
-        <from-view-id>Agenda/listar_agendamentos.jsp</from-view-id>
+        <from-view-id>/Agenda/listar_agendamentos.jsp</from-view-id>
         <navigation-case>
             <from-outcome>agenda</from-outcome>
-            <to-view-id>Agenda/alterar_agendamento.jsp</to-view-id>
+            <to-view-id>/Agenda/alterar_agendamento.jsp</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -120,11 +131,24 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>Agenda/cadastrar_agendamento.jsp</from-view-id>
+        <from-view-id>/Agenda/cadastrar_agendamento.jsp</from-view-id>
         <navigation-case>
             <from-outcome>listarAge</from-outcome>
-            <to-view-id>Agenda/listar_agendamentos.jsp</to-view-id>
+            <to-view-id>/Agenda/listar_agendamentos.jsp</to-view-id>
             <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/Relatorios/gerar_relatorio.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>valor</from-outcome>
+            <to-view-id>/Relatorios/relatorio_valor.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>notvalor</from-outcome>
+            <to-view-id>/Relatorios/relatorio_periodo.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     

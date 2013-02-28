@@ -7,27 +7,43 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadatrar Exame</title>
+        <title>Cadastrar Exame</title>
+
+        <link href="../Estilo/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="../Estilo/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        
+
         <f:view>
-            <h:form id="cadastro" prependId="false">
-                Nome: <br/><h:inputText id="nome" value="#{Exame.nome}"/><br/>
-                Valor: <br/><h:inputText id="valor" value="#{Exame.valor}"/>
-                <br/><br/>
-                
-                <h:commandButton action="#{Exame.cadastrar()}" value="Cadastrar"/>
-                <h:commandButton action="#{Exame.limpar()}" value="Limpar"/>
-                <br/><br/>
-                <h:outputText value="#{Exame.msgmErro}" style="color:#FF0000"/>
-                <br/><br/>
-                <h:commandLink action="#{Exame.listarE()}" value="Listar Exames"/>
-                <br/><br/><br/>
-                <a href="../faces/index.jsp">Retornar Menu</a>
-            </h:form>
-                
+            <div class="container">
+                <h:form id="cadastro" prependId="false" styleClass="form-horizontal">
+                    
+                    <div class="control-group">
+                        <div class="control-label">Nome: </div>    
+                        <div class="controls"><h:inputText id="nome" value="#{Exame.nome}"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Valor:  </div>    
+                        <div class="input-prepend"><span class="add-on">R$</span>
+                            <h:inputText id="valor" value="#{Exame.valor}" styleClass="span2"/>
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <br/><br/>
+
+                    <h:commandButton action="#{Exame.cadastrar()}" value="Cadastrar"/>
+                    <h:commandButton action="#{Exame.limpar()}" value="Limpar"/>
+                    <br/><br/>
+                    <h:outputText value="#{Exame.msgmErro}" style="color:#FF0000"/>
+                    <br/><br/>
+                    <h:commandLink action="#{Exame.listarE()}" value="Listar Exames"/>
+                    <br/><br/><br/>
+                    <h:commandLink action="../faces/menu_agenda.jsp" value="Menu" styleClass="btn"/>
+                </h:form>
+            </div>
         </f:view>
-        
+
     </body>
 </html>

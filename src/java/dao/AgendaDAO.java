@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import org.hibernate.HibernateException;
 
 public class AgendaDAO {
     
@@ -114,11 +113,8 @@ public class AgendaDAO {
                 conecta().remove(agenda);
                 conecta().getTransaction().commit();
                 
-                System.out.println("======================ESTOU AQUIZZ!====================");
-                
                 return true;
             } else {
-                System.out.println("======================NOT AQUI!====================");
                 return false;
             }
         } catch (Exception e){
@@ -126,15 +122,14 @@ public class AgendaDAO {
             if (conecta().getTransaction().isActive()){
                 conecta().getTransaction().rollback();
             }
-            System.out.println("======================EN AQUI!====================");
             return false;
         }
     }
     
     public List<AgendaDAO> getAgendamentos(String consulta) {
         try{
-            if (conecta() != null) {
-                Query q = conecta().createQuery(consulta);
+            if (conecta() != null) {               
+                Query q = conecta().createQuery(consulta);               
                 
                 List<Agenda> agenda = q.getResultList();
                 List<AgendaDAO> agendaDAO = new ArrayList();
@@ -142,15 +137,16 @@ public class AgendaDAO {
                 for (Agenda a : agenda){
                     AgendaPK agendaPK = a.getAgendaPK();
                     agendaDAO.add(new AgendaDAO(agendaPK.getDataHora(), agendaPK.getIdMedico(), 
-                            agendaPK.getIdPaciente(), agendaPK.getIdExame(), a.getObs(), a.getResultado()));
+                            agendaPK.getIdPaciente(), agendaPK.getIdExame(), a.getObs(), a.getResultado()));                    
                 }
-                
+
                 return agendaDAO;        
                 
             } else {
                 return null;
             }
         } catch (Exception e) {
+            e.printStackTrace();
             if(conecta().getTransaction().isActive()){
                 conecta().getTransaction().rollback();
             }

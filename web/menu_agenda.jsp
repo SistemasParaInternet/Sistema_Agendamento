@@ -30,6 +30,9 @@
                 <h:commandLink action="Agenda/cadastrar_agendamento.jsp">
                     <h:graphicImage value="Imagens/icones/agenda-icone.png" />
                 </h:commandLink>
+                <h:commandLink action="Relatorios/gerar_relatorio.jsp">
+                    <h:graphicImage value="Imagens/icones/relatorio-icone.png" />
+                </h:commandLink>
             </h:form>           
         </f:view>
     </body>

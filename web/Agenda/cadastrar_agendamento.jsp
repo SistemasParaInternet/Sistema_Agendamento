@@ -7,44 +7,80 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadatrar Exames de Pacientes</title>
+        <title>Agendar Exames</title>
+
+        <link href="../Estilo/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="../Estilo/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        
+
         <f:view>
-            <h:form id="cadastro" prependId="false">
-                
-                Data : <br/><h:inputText id="nome" value="#{Agenda.dataHora}">
-                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-                                </h:inputText><br/>
-                
-                Exame: <br/><h:selectOneMenu id="idExame" value="#{Agenda.idExame}" >
-                            <f:selectItems value="#{Exame.examesSelect}" var="exame" itemLabel="exame.nome" itemValue="exame.idExame" />                            
-                       </h:selectOneMenu><br/>
-                            
-                Medico: <br/><h:selectOneMenu id="idMedico" value="#{Agenda.idMedico}" >
-                            <f:selectItems value="#{Medico.medicosSelect}" var="medico" itemValue="medico.idMedico" itemLabel="medico.nome"/>                            
-                        </h:selectOneMenu><br/>                            
+            <div class="container">
+                <h:form id="cadastro" prependId="false" styleClass="form-horizontal">
 
-                Paciente: <br/><h:selectOneMenu id="idPaciente" value="#{Agenda.idPaciente}" >
+                    <div class="control-group">
+                        <div class="control-label">Data: </div>    
+                        <div class="controls">
+                            <h:inputText id="nome" value="#{Agenda.dataHora}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+                            </h:inputText>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Exame: </div>    
+                        <div class="controls">
+                            <h:selectOneMenu id="idExame" value="#{Agenda.idExame}" >
+                                <f:selectItems value="#{Exame.examesSelect}" var="exame" itemLabel="exame.nome" itemValue="exame.idExame" />                            
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Médico: </div>    
+                        <div class="controls">
+                            <h:selectOneMenu id="idMedico" value="#{Agenda.idMedico}" >
+                                <f:selectItems value="#{Medico.medicosSelect}" var="medico" itemValue="medico.idMedico" itemLabel="medico.nome"/>                            
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Paciente: </div>    
+                        <div class="controls">
+                            <h:selectOneMenu id="idPaciente" value="#{Agenda.idPaciente}" >
                                 <f:selectItems value="#{Paciente.pacientesSelect}" var="paciente" itemValue="paciente.idPaciente" itemLabel="paciente.nome"/>                            
-                          </h:selectOneMenu><br/>
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
 
-                Resultado: <br/><h:inputTextarea id="resultado" value="#{Agenda.resultado}" cols="35" rows="2"/><br/>
-                            
-                Observações: <br/><h:inputTextarea id="obs" value="#{Agenda.obs}" cols="35" rows="5"/><br/>                         
-                
-                <h:commandButton action="#{Agenda.cadastrar()}" value="Cadastrar"/>
-                <h:commandButton action="#{Agenda.limpar()}" value="Limpar"/>
-                <br/><br/>
-                <h:commandLink action="#{Agenda.listarA()}" value="Listar Agendamentos"/>
+                    <div class="control-group">
+                        <div class="control-label">Resultado: </div>    
+                        <div class="controls">
+                            <h:inputTextarea id="resultado" value="#{Agenda.resultado}" cols="35" rows="2"/><br/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="control-label">Observações: </div>    
+                        <div class="controls">
+                            <h:inputTextarea id="obs" value="#{Agenda.obs}" cols="35" rows="5"/><br/>                         
+                        </div>
+                    </div>
 
-                <h:outputText value="#{Agenda.msgmErro}" style="color:#FF0000"/>
-                <br/><br/>
-                <a href="../faces/index.jsp">Retornar Menu</a>
-            </h:form>
-                
+
+                    <h:commandButton action="#{Agenda.cadastrar()}" value="Cadastrar"/>
+                    <h:commandButton action="#{Agenda.limpar()}" value="Limpar"/>
+                    <br/><br/>
+                    <h:commandLink action="#{Agenda.listarA()}" value="Listar Agendamentos"/>
+
+                    <h:outputText value="#{Agenda.msgmErro}" style="color:#FF0000"/>
+                    <br/><br/>                    
+                    <h:commandLink action="../faces/menu_agenda.jsp" value="Menu" styleClass="btn"/>
+
+
+                </h:form>
+            </div>
         </f:view>
-        
+
     </body>
 </html>

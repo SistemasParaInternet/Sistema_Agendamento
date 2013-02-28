@@ -8,71 +8,63 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar Médicos</title>
-        <style>
-            .cabecalho {
-                background-color: buttonface;
-            }
-            
-            .colunaMarca {
-                background-color: tomato
-            }
-            
-            .coluna {
-                background-color: azure
-            }
-            
-        </style>
+
+        <link href="../Estilo/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="../Estilo/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <f:view>
-            <h:form id="listarMed" prependId="false">
-                <h:dataTable value="#{Medico.listarMedicos()}" var="medicos" id="listarMedicos"
-                             width="500" border="1" cellpadding="2" cellspacing="1"
-                             headerClass="cabecalho" columnClasses="colunaMarca, coluna, coluna, coluna">
-                    
-                    <h:column>
-                        <f:facet name="header">
-                        </f:facet>                        
-                        <h:selectBooleanCheckbox value="#{medicos.cb}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdMedico"/>
-                        </f:facet>                        
-                        <h:outputText value="#{medicos.idMedico}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Nome"/>
-                        </f:facet>                        
-                        <h:outputText value="#{medicos.nome}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="CRM"/>
-                        </f:facet>                        
-                        <h:outputText value="#{medicos.crm}"/>
-                    </h:column>
-                    
-                </h:dataTable>
-                
-                <br/><br/>
-                
-                <h:commandButton value="Editar" action="#{Medico.carregarMedico()}"/>
-                <h:commandButton value="Apagar" action="#{Medico.remove()}"/>
-                
-                <br/><br/>
-                
-                <h:outputText value="#{Medico.texto}"/>
-                
-                <br/><br/>
-                
-                <a href="cadastrar_medico.jsp">Voltar</a>
-                
-            </h:form>
+            <div class="container">
+                <h:form id="listarMed" prependId="false">
+                    <h:dataTable styleClass="table table-hover table-condensed table-bordered"
+                                 value="#{Medico.listarMedicos()}" var="medicos" id="listarMedicos"
+                                 width="500" cellpadding="2" cellspacing="1">
+
+                        <h:column>
+                            <f:facet name="header">
+                                <i class="icon-share-alt"></i>
+                                <h:outputText value=""/>
+                            </f:facet>
+                            <h:selectBooleanCheckbox value="#{medicos.cb}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:outputText value="#{medicos.idMedico}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Médico"/>
+                            </f:facet>
+                            <h:outputText value="#{medicos.nome}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CRM"/>
+                            </f:facet>
+                            <h:outputText value="#{medicos.crm}"/>
+                        </h:column>
+
+                    </h:dataTable>
+
+                    <br/><br/>
+
+                    <h:commandButton value="Editar" action="#{Medico.carregarMedico()}"/>
+                    <h:commandButton value="Apagar" action="#{Medico.remove()}"/>
+
+                    <br/><br/>
+
+                    <h:outputText value="#{Medico.texto}"/>
+
+                    <br/><br/>
+
+                    <h:commandLink action="cadastrar_medico.jsp" value="Cadastrar" styleClass="btn"/>
+                </h:form>
+            </div>
         </f:view>
     </body>
 </html>

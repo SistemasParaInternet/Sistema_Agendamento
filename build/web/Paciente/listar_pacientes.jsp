@@ -1,8 +1,3 @@
-<%-- 
-    Document   : listar_paciente
-    Created on : 21/02/2013, 15:14:17
-    Author     : alaric
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -14,109 +9,103 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar Pacientes</title>
-        <style>
-            .cabecalho {
-                background-color: buttonface;
-            }
-            
-            .colunaMarca {
-                background-color: tomato
-            }
-            
-            .coluna {
-                background-color: azure
-            }
-            
-        </style>
+
+        <link href="../Estilo/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="../Estilo/bootstrap.min.css" rel="stylesheet">
+
     </head>
     <body>
+
         <f:view>
-            <h:form id="listarPac" prependId="false">
-                <h:dataTable value="#{Paciente.listarPacientes()}" var="pacientes" id="listarPacientes"
-                             width="700" border="1" cellpadding="2" cellspacing="1"
-                             headerClass="cabecalho" columnClasses="colunaMarca, coluna, coluna, coluna, coluna,
-                             coluna, coluna, coluna, coluna">
-                    
-                    <h:column>
-                        <f:facet name="header">
-                        </f:facet>                        
-                        <h:selectBooleanCheckbox value="#{pacientes.cb}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdPaciente"/>
-                        </f:facet>                        
-                        <h:outputText value="#{pacientes.idPaciente}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Nome"/>
-                        </f:facet>                        
-                        <h:outputText value="#{pacientes.nome}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="DataNasc"/>
-                        </f:facet>                        
-                        <h:outputText value="#{pacientes.dataNasc}">
-                            <f:convertDateTime pattern="dd/MM/yyyy"/>
-                        </h:outputText>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Logradouro"/>
-                        </f:facet>                        
-                        <h:outputText value="#{pacientes.logradouro}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Numero"/>
-                        </f:facet>                        
-                        <h:outputText value="#{pacientes.numero}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Bairro"/>
-                        </f:facet>                        
-                        <h:outputText value="#{pacientes.bairro}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Cidade"/>
-                        </f:facet>                        
-                        <h:outputText value="#{pacientes.cidade}"/>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Uf"/>
-                        </f:facet>                        
-                        <h:outputText value="#{pacientes.uf}"/>
-                    </h:column>
-                    
-                </h:dataTable>
-                
-                <br/><br/>
-                
-                <h:commandButton value="Editar" action="#{Paciente.carregarPaciente()}"/>
-                <h:commandButton value="Apagar" action="#{Paciente.remove()}"/>
-                
-                <br/><br/>
-                
-                <h:outputText value="#{Paciente.texto}"/>
-                
-                <br/><br/>
-                
-                <a href="cadastrar_paciente.jsp">Voltar</a>
-                
-            </h:form>
+            <div class="container">
+                <h:form id="listarPac" prependId="false">                    
+                    <h:dataTable styleClass="table table-hover table-condensed table-bordered"
+                                 value="#{Paciente.listarPacientes()}" var="pacientes" id="listarPacientes"
+                                 cellpadding="2" cellspacing="1">
+
+                        <h:column>
+                            <f:facet name="header">
+                                <i class="icon-share-alt"></i>
+                                <h:outputText value=""/>
+                            </f:facet>
+                            <h:selectBooleanCheckbox value="#{pacientes.cb}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:outputText value="#{pacientes.idPaciente}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nome"/>
+                            </f:facet>
+                            <h:outputText value="#{pacientes.nome}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Data de Nascimento"/>
+                            </f:facet>
+                            <h:outputText value="#{pacientes.dataNasc}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Logradouro"/>
+                            </f:facet>
+                            <h:outputText value="#{pacientes.logradouro}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Número"/>
+                            </f:facet>
+                            <h:outputText value="#{pacientes.numero}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Bairro"/>
+                            </f:facet>
+                            <h:outputText value="#{pacientes.bairro}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cidade"/>
+                            </f:facet>
+                            <h:outputText value="#{pacientes.cidade}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="UF"/>
+                            </f:facet>
+                            <h:outputText value="#{pacientes.uf}"/>
+                        </h:column>
+
+                    </h:dataTable>
+
+                    <br/><br/>
+
+                    <h:commandButton value="Editar" styleClass="btn" action="#{Paciente.carregarPaciente()}"/>
+                    <h:commandButton value="Apagar" styleClass="btn" action="#{Paciente.remove()}"/>
+
+                    <br/><br/>
+
+                    <h:outputText value="#{Paciente.texto}"/>
+
+                    <br/><br/>
+
+                    <h:commandLink action="cadastrar_paciente.jsp" value="Cadastrar Pacientes" styleClass="btn"/>
+
+                </h:form>
+            </div>
         </f:view>
     </body>
 </html>
