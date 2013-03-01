@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{Usuario.verificarLogin()}"/>
+    </f:metadata>
+    <head>        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Relatório de Exames</title>
+
+        <link href="estilo/bootstrap.css" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+
+    <f:view>
+
+        <div class="wrapper">
+            <div class="container-fluid">
+                <ui:include src="cabecalho.xhtml"/>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Gerar Relatórios</h2>
+            <h:form id="gerar" prependId="false"  styleClass="form-horizontal">
+
+                <div class="control-group">
+                    <div class="control-label"><span style="color: red;">*</span> Data Inicial </div>    
+                    <div class="controls">
+                        <h:inputText id="dataInicial" value="#{Relatorio.dataInicial}" required="true" requiredMessage="Campo Obrigatório!">
+                            <h:message for="dataInicial" styleClass="alert alert-warning"/>
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:inputText><br/><br/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label"><span style="color: red;">*</span> Data Final: </div>    
+                    <div class="controls">
+                        <h:inputText id="dataFinal" value="#{Relatorio.dataFinal}" required="true" requiredMessage="Campo Obrigatório!">
+                            <h:message for="dataFinal" styleClass="alert alert-warning"/>
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:inputText><br/><br/>
+                    </div>
+                </div>
+
+                <h:selectBooleanCheckbox value="#{Relatorio.valor}"/> Valor<br/><br/>
+
+                <h:commandButton action="#{Relatorio.gerar()}" value="Gerar" styleClass="btn"/>
+
+            </h:form>
+        </div>
+    </f:view>
+
+</body>
+</html>

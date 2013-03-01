@@ -19,16 +19,18 @@ public class GeraRelatorioBean {
     private boolean valor;
     private String dataInicialS;
     private String dataFinalS;
+    private float soma;
  
     
     public DataModel listarRelatorio() {
         SimpleDateFormat formatarData = new SimpleDateFormat("yyyy-MM-dd");
         dataInicialS = formatarData.format(dataInicial);
         dataFinalS = formatarData.format(dataFinal);
-        return listarAgendamentos("SELECT a FROM Agenda a WHERE dataHora BETWEEN '"+ dataInicialS +"' AND '"+ dataFinalS +"'");
+        return listarAgendamentos("SELECT a FROM Agenda a WHERE dataHora BETWEEN '"+ dataInicialS +"' AND '"+ dataFinalS +" 23:59:00'");
     }
     
     public DataModel listarAgendamentos(String consulta) {
+        soma = 0;
         AgendaDAO agendaDAO = new AgendaDAO();
         agendasBean.removeAll(agendasBean);
         
@@ -41,6 +43,8 @@ public class GeraRelatorioBean {
                 ExameBean exame = new ExameBean();
                 exame.setIdExame(aDAO.getIdExame()); 
                 exameBean = exame.getExame();
+                soma += exameBean.getValor();
+                
                 agenda.setExameBean(exameBean);
                 
                 PacienteBean paciente = new PacienteBean();
@@ -66,7 +70,19 @@ public class GeraRelatorioBean {
             return "notvalor";
         }
     }
+    
+    public String soma(){
+        return String.valueOf(soma);
+    }
 
+    public float getSoma() {
+        return soma;
+    }
+
+    public void setSoma(float soma) {
+        this.soma = soma;
+    }    
+    
     public boolean isValor() {
         return valor;
     }

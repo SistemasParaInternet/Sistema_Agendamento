@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{Usuario.verificarLogin()}"/>
+    </f:metadata>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Alterar Paciente</title>
+
+        <link href="estilo/bootstrap.css" rel="stylesheet" media="screen"/>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+        <script type="text/javascript">
+            function add_atributo_form(formulario, elemento, atributo, valor){
+                var campo = $("#" + formulario + "\\:" + elemento);
+                campo.attr(atributo, valor);
+            }
+            function add_mascara_form(formulario, elemento, mascara, placeholder){
+                var campo = $("#" + formulario + "\\:" + elemento);
+                campo.mask(mascara, {placeholder : placeholder});
+            }
+            $(document).ready(function() {
+                add_atributo_form("alterarPac", "dataNasc", "placeholder", "dd/mm/aaaa");               
+                add_mascara_form("alterarPac", "dataNasc", "99/99/9999" , "_");
+            });
+            
+        </script>
+    </head>
+    <body>
+
+        <f:view>
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <ui:include src="cabecalho.xhtml"/>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Alterar Paciente</h2>
+                <h:form id="alterarPac" styleClass="form-horizontal">
+
+                    <div class="control-group">
+                        <div class="control-label"><span style="color: red;">*</span> Nome: </div>    
+                        <div class="controls">
+                            <h:inputText id="nome" value="#{Paciente.nome}" required="true" requiredMessage="Campo Obrigatório!"/>
+                            <h:message for="nome" styleClass="alert alert-warning"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label"><span style="color: red;">*</span> Data Nascimento: </div>    
+                        <div class="controls">
+                            <h:inputText id="dataNasc" value="#{Paciente.dataNasc}" required="true" requiredMessage="Campo Obrigatório!">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:inputText>
+                            <h:message for="dataNasc" styleClass="alert alert-warning"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Logradouro: </div>    
+                        <div class="controls">
+                            <h:inputText id="logradouro" value="#{Paciente.logradouro}"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Número: </div>    
+                        <div class="controls">
+                            <h:inputText id="numero" value="#{Paciente.numero}"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Bairro: </div>    
+                        <div class="controls">
+                            <h:inputText id="bairro" value="#{Paciente.bairro}"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Cidade: </div>    
+                        <div class="controls">
+                            <h:inputText id="cidade" value="#{Paciente.cidade}"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Estado: </div>    
+                        <div class="controls">
+                            <h:inputText id="uf" value="#{Paciente.uf}" maxlength="2"/>
+                        </div>
+                    </div>
+
+                    <br/><br/>
+
+                    <h:commandButton action="#{Paciente.alterar()}" value="Alterar Dados" styleClass="btn"/>
+                    <br/><br/>
+                    <h:outputText value="#{Paciente.msgmErro}"  styleClass="text-error"/>
+                </h:form>
+            </div>
+        </f:view>
+        <script src="estilo/jquery.js"></script>
+        <script src="estilo/jquery.maskedinput.min.js"></script>
+    </body>
+</html>

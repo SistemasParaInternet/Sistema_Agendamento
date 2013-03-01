@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html">
+    <script src="estilo/jquery.js"></script>
+    <script src="estilo/bootstrap.min.js"></script>
+
+        <div class="container">
+            <div class="navbar">
+                <ul class="nav nav-tabs">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="inicial.xhtml"><i class="icon-home"></i>Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Paciente</a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="cadastrar_paciente.xhtml"><i class="icon-plus"></i>Cadastrar</a></li>
+                            <li><a tabindex="-1" href="listar_pacientes.xhtml"><i class="icon-list"></i>Listar Pacientes</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Médico</a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="cadastrar_medico.xhtml"><i class="icon-plus"></i>Cadastrar</a></li>
+                            <li><a tabindex="-1" href="listar_medicos.xhtml"><i class="icon-list"></i>Listar Médicos</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Exame</a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="cadastrar_exame.xhtml"><i class="icon-plus"></i>Cadastrar</a></li>
+                            <li><a tabindex="-1" href="listar_exames.xhtml"><i class="icon-list"></i>Listar Exames</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Agenda</a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="cadastrar_agendamento.xhtml"><i class="icon-plus"></i>Agendar</a></li>
+                            <li><a tabindex="-1" href="listar_agendamentos.xhtml"><i class="icon-list"></i>Listar Agendamentos</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="gerar_relatorio.xhtml"><i class="icon-list"></i>Relatórios</a>
+                    </li>
+                    <li class="dropdown">
+                        <h:form style="">
+                            <h:commandButton value="Sair" action="#{Usuario.deslogar()}" styleClass="btn btn-danger" /> 
+                        </h:form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+</ui:composition>

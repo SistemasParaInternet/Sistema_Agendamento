@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{Usuario.verificarLogin()}"/>
+    </f:metadata>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Relatório de Agendamentos</title>
+
+        <link href="estilo/bootstrap.css" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+        <f:view>
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <ui:include src="cabecalho.xhtml"/>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Relatório Período</h2>
+                <h:form id="listarRel" prependId="false">
+                    <h:dataTable styleClass="table table-hover table-condensed"
+                                 value="#{Relatorio.listarRelatorio()}" var="relatorio" id="listarRelatorio"
+                                 width="600" cellpadding="2" cellspacing="1">
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID Exame"/>
+                            </f:facet>
+                            <h:outputText value="#{relatorio.exameBean.idExame}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Exame"/>
+                            </f:facet>
+                            <h:outputText value="#{relatorio.exameBean.nome}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Data / Hora"/>
+                            </f:facet>
+                            <h:outputText value="#{relatorio.dataHora}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Paciente"/>
+                            </f:facet>
+                            <h:outputText value="#{relatorio.pacienteBean.nome}"/>
+                        </h:column>
+
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </f:view>
+    </body>
+</html>

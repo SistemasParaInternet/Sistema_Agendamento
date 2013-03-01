@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{Usuario.verificarLogin()}"/>
+    </f:metadata>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Listar Pacientes</title>
+
+        <link href="estilo/bootstrap.css" rel="stylesheet" media="screen"/>
+
+    </head>
+    <body>
+
+    <f:view>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <ui:include src="cabecalho.xhtml"/>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Pacientes</h2>
+            <h:form id="listarPac" prependId="false">                    
+                <h:dataTable styleClass="table table-hover table-condensed"
+                             value="#{Paciente.listarPacientes()}" var="pacientes" id="listarPacientes">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <i class="icon-share-alt"></i>
+                            <h:outputText value=""/>
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{pacientes.cb}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:outputText value="#{pacientes.idPaciente}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{pacientes.nome}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data de Nascimento"/>
+                        </f:facet>
+                        <h:outputText value="#{pacientes.dataNasc}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Logradouro"/>
+                        </f:facet>
+                        <h:outputText value="#{pacientes.logradouro}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Número"/>
+                        </f:facet>
+                        <h:outputText value="#{pacientes.numero}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Bairro"/>
+                        </f:facet>
+                        <h:outputText value="#{pacientes.bairro}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cidade"/>
+                        </f:facet>
+                        <h:outputText value="#{pacientes.cidade}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="UF"/>
+                        </f:facet>
+                        <h:outputText value="#{pacientes.uf}"/>
+                    </h:column>
+
+                </h:dataTable>
+
+                <br/><br/>
+
+                <h:commandButton value="Editar" action="#{Paciente.carregarPaciente()}"  styleClass="btn"/>
+                <h:commandButton value="Apagar" action="#{Paciente.remove()}" styleClass="btn"/>
+                <br/><br/>
+                <h:outputText value="#{Paciente.texto}" styleClass="text-warning"/>
+            </h:form>
+        </div>
+    </f:view>
+</body>
+</html>

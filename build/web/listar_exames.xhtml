@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{Usuario.verificarLogin()}"/>
+    </f:metadata>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Listar Exame</title>
+
+        <link href="estilo/bootstrap.css" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+    <f:view>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <ui:include src="cabecalho.xhtml"/>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Exames</h2>
+            <h:form id="listarExe" prependId="false">                
+                <h:dataTable styleClass="table table-hover table-condensed"
+                             value="#{Exame.listarExames()}" var="exames" id="listarExames"
+                             width="500" cellpadding="2" cellspacing="1">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <i class="icon-share-alt"></i>
+                            <h:outputText value=""/>
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{exames.cb}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:outputText value="#{exames.idExame}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Exame"/>
+                        </f:facet>
+                        <h:outputText value="#{exames.nome}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Valor"/>
+                        </f:facet>
+                        <h:outputText value="#{exames.valor}"/>
+                    </h:column>
+
+                </h:dataTable>
+
+                <br/><br/>
+
+                <h:commandButton value="Editar" action="#{Exame.carregarExame()}" styleClass="btn"/>
+                <h:commandButton value="Apagar" action="#{Exame.remove()}" styleClass="btn"/>
+                <br/><br/>
+                <h:outputText value="#{Exame.texto}" styleClass="text-warning"/>
+            </h:form>
+        </div>
+    </f:view>
+</body>
+</html>

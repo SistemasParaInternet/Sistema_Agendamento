@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{Usuario.verificarLogin()}"/>
+    </f:metadata>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Listar Agendamentos</title>
+
+        <link href="estilo/bootstrap.css" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+
+    <f:view>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <ui:include src="cabecalho.xhtml"/>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Agendamentos</h2>
+            <h:form id="listarAge" prependId="false">
+                <h:dataTable styleClass="table table-hover table-condensed"
+                             value="#{Agenda.listarTodos()}" var="agenda" id="listarAgendamentos"
+                             width="600" cellpadding="2" cellspacing="1">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <i class="icon-share-alt"></i>
+                            <h:outputText value=""/>
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{agenda.agendaMarcado}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data / Hora"/>
+                        </f:facet>
+                        <h:outputText value="#{agenda.dataHora}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Exame"/>
+                        </f:facet>
+                        <h:outputText value="#{agenda.exameBean.nome}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Médico"/>
+                        </f:facet>
+                        <h:outputText value="#{agenda.medicoBean.nome}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Paciente"/>
+                        </f:facet>
+                        <h:outputText value="#{agenda.pacienteBean.nome}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Resultado"/>
+                        </f:facet>
+                        <h:outputText value="#{agenda.resultado}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Observação"/>
+                        </f:facet>
+                        <h:outputText value="#{agenda.obs}"/>
+                    </h:column>
+
+                </h:dataTable>
+
+                <br/><br/>
+
+                <h:commandButton value="Editar" action="#{Agenda.carregarAgendamento()}" styleClass="btn"/>
+                <h:commandButton value="Apagar" action="#{Agenda.remove()}" styleClass="btn"/>
+                <br/><br/>
+
+                <h:outputText value="#{Agenda.texto}" styleClass="text-warning"/>
+            </h:form>
+        </div>
+    </f:view>
+</body>
+</html>

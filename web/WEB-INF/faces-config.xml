@@ -7,7 +7,12 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
 
-    
+    <managed-bean>
+        <managed-bean-name>Usuario</managed-bean-name>
+        <managed-bean-class>ctrl.UsuarioBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>        
+    </managed-bean>
+       
     <managed-bean>
         <managed-bean-name>Paciente</managed-bean-name>
         <managed-bean-class>ctrl.PacienteBean</managed-bean-class>
@@ -45,23 +50,32 @@
     </managed-bean>
     
     <navigation-rule>
-        <from-view-id>/Paciente/listar_pacientes.jsp</from-view-id>
+        <from-view-id>index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>logou</from-outcome>
+            <to-view-id>inicial.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>listar_pacientes.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>paciente</from-outcome>
-            <to-view-id>/Paciente/alterar_paciente.jsp</to-view-id>
+            <to-view-id>alterar_paciente.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>notpaciente</from-outcome>
-            <to-view-id>listar_pacientes.jsp</to-view-id>
+            <to-view-id>listar_pacientes.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/Paciente/cadastrar_paciente.jsp</from-view-id>
+        <from-view-id>cadastrar_paciente.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>listarPac</from-outcome>
-            <to-view-id>/Paciente/listar_pacientes.jsp</to-view-id>
+            <to-view-id>listar_pacientes.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
@@ -70,23 +84,23 @@
     
     
     <navigation-rule>
-        <from-view-id>/Exame/listar_exames.jsp</from-view-id>
+        <from-view-id>listar_exames.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>exames</from-outcome>
-            <to-view-id>/Exame/alterar_exame.jsp</to-view-id>
+            <to-view-id>alterar_exame.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>notexames</from-outcome>
-            <to-view-id>listar_exames.jsp</to-view-id>
+            <to-view-id>listar_exames.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/Exame/cadastrar_exame.jsp</from-view-id>
+        <from-view-id>cadastrar_exame.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>listarExe</from-outcome>
-            <to-view-id>/Exame/listar_exames.jsp</to-view-id>
+            <to-view-id>listar_exames.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
@@ -94,61 +108,60 @@
     
     
     <navigation-rule>
-        <from-view-id>/Medico/listar_medicos.jsp</from-view-id>
+        <from-view-id>listar_medicos.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>medico</from-outcome>
-            <to-view-id>/Medico/alterar_medico.jsp</to-view-id>
+            <to-view-id>alterar_medico.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>notmedico</from-outcome>
-            <to-view-id>listar_medicos.jsp</to-view-id>
+            <to-view-id>listar_medicos.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/Medico/cadastrar_medico.jsp</from-view-id>
+        <from-view-id>cadastrar_medico.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>listarMed</from-outcome>
-            <to-view-id>/Medico/listar_medicos.jsp</to-view-id>
+            <to-view-id>listar_medicos.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
-    </navigation-rule>
-    
+    </navigation-rule>    
     
     
     <navigation-rule>
-        <from-view-id>/Agenda/listar_agendamentos.jsp</from-view-id>
+        <from-view-id>listar_agendamentos.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>agenda</from-outcome>
-            <to-view-id>/Agenda/alterar_agendamento.jsp</to-view-id>
+            <to-view-id>alterar_agendamento.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>notagenda</from-outcome>
-            <to-view-id>listar_agendamentos.jsp</to-view-id>
+            <to-view-id>listar_agendamentos.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/Agenda/cadastrar_agendamento.jsp</from-view-id>
+        <from-view-id>cadastrar_agendamento.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>listarAge</from-outcome>
-            <to-view-id>/Agenda/listar_agendamentos.jsp</to-view-id>
+            <to-view-id>listar_agendamentos.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/Relatorios/gerar_relatorio.jsp</from-view-id>
+        <from-view-id>gerar_relatorio.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>valor</from-outcome>
-            <to-view-id>/Relatorios/relatorio_valor.jsp</to-view-id>
+            <to-view-id>relatorio_valor.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>notvalor</from-outcome>
-            <to-view-id>/Relatorios/relatorio_periodo.jsp</to-view-id>
+            <to-view-id>relatorio_periodo.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     

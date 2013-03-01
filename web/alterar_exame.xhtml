@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{Usuario.verificarLogin()}"/>
+    </f:metadata>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Alterar Exame</title>
+
+        <link href="estilo/bootstrap.css" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+        <f:view>
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <ui:include src="cabecalho.xhtml"/>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Alterar Exame</h2>
+                <h:form id="alterarExa" styleClass="form-horizontal">
+
+                    <div class="control-group">
+                        <div class="control-label"><span style="color: red;">*</span> Nome: </div>    
+                        <div class="controls"><h:inputText id="nome" value="#{Exame.nome}" required="true" requiredMessage="Campo Obrigatório!"/>
+                            <h:message for="nome" styleClass="alert alert-warning"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label"><span style="color: red;">*</span> Valor: </div>    
+                        <div class="input-prepend"><span class="add-on">R$</span>
+                            <h:inputText id="valor" value="#{Exame.valor}" styleClass="span2" required="true" requiredMessage="Campo Obrigatório!"/>
+                            <h:message for="valor" styleClass="alert alert-warning"/>
+
+                        </div>
+                    </div>
+                    <br/><br/>
+
+                    <h:commandButton action="#{Exame.alterar()}" value="Alterar Dados" styleClass="btn"/>
+                    <br/><br/>
+                    <h:outputText value="#{Exame.msgmErro}"  styleClass="text-error"/>
+                </h:form>
+            </div>
+        </f:view>
+
+    </body>
+</html>
+

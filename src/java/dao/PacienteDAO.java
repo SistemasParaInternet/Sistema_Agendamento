@@ -125,26 +125,23 @@ public class PacienteDAO {
                     Paciente paciente = (Paciente) q.getSingleResult();
                     PacienteDAO pacienteDAO = new PacienteDAO(paciente.getIdPaciente(), paciente.getNome(), paciente.getDataNasc(),
                                 paciente.getLogradouro(), paciente.getNumero(), paciente.getBairro(), paciente.getCidade(), paciente.getUf());
-                    System.out.println("======================ESTOU AQUI! 1====================");
                     return pacienteDAO;
                     
                 } else {
-                    System.out.println("======================ESTOU AQUI! 2====================");
                     return null;
                 }               
             } else {
-                System.out.println("======================ESTOU AQUI! 3====================");
                 return null;
             }
             
         } catch (Exception e){
-            System.out.println("======================ESTOU AQUI! 4====================");
             e.printStackTrace();
             return null;           
         }
     }
     
-    public List<PacienteDAO> getPacientes() {
+    public List<PacienteDAO> getPacientes()
+    {
         try {
             if (conecta() != null) {
                 Query q = conecta().createQuery("SELECT p FROM Paciente p");

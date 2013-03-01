@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{Usuario.verificarLogin()}"/>
+    </f:metadata>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Alterar Médico</title>
+
+        <link href="estilo/bootstrap.css" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+        <f:view>
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <ui:include src="cabecalho.xhtml"/>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Alterar Médico</h2>
+                <h:form id="alterarMed" styleClass="form-horizontal">
+
+                    <div class="control-group">
+                        <div class="control-label"><span style="color: red;">*</span> Nome: </div>    
+                        <div class="controls">
+                            <h:inputText id="nome" value="#{Medico.nome}"  required="true" requiredMessage="Campo Obrigatório!"/>
+                            <h:message for="nome" styleClass="alert alert-warning"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label"><span style="color: red;">*</span> CRM: </div>    
+                        <div class="controls">
+                            <h:inputText id="crm" value="#{Medico.crm}" required="true" requiredMessage="Campo Obrigatório!"/>
+                            <h:message for="crm" styleClass="alert alert-warning"/>
+                        </div>
+                    </div>
+                    <br/><br/>
+
+                    <h:commandButton action="#{Medico.alterar()}" value="Alterar Dados" styleClass="btn"/>
+                    <br/><br/>
+                    <h:outputText value="#{Medico.msgmErro}"  styleClass="text-error"/>
+                </h:form>
+            </div>
+        </f:view>
+
+    </body>
+</html>
+
